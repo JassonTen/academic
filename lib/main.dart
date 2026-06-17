@@ -20,11 +20,77 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const PromedioPage(),
+      // Arranca directamente en el nuevo Splash Screen
+      home: const AcademicSplashScreen(),
     );
   }
 }
 
+// --- NUEVA PANTALLA DE CARGA (SPLASH SCREEN) ---
+class AcademicSplashScreen extends StatefulWidget {
+  const AcademicSplashScreen({super.key});
+
+  @override
+  State<AcademicSplashScreen> createState() => _AcademicSplashScreenState();
+}
+
+class _AcademicSplashScreenState extends State<AcademicSplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Temporizador de 3 segundos antes de navegar a la calculadora
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const PromedioPage()),
+        );
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Color(0xFF023052), // Color primario actual
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Nuevo logo de la app: Hoja de notas con check integrado
+            Icon(
+              Icons.assignment_turned_in,
+              size: 100,
+              color: Color(0xFFFFCC00), // Color secundario actual
+            ),
+            SizedBox(height: 25),
+            Text(
+              "Welcome academic Check",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ),
+            ),
+            SizedBox(height: 35),
+            // Indicador de carga que combina con la paleta de colores
+            SizedBox(
+              width: 40,
+              height: 40,
+              child: CircularProgressIndicator(
+                color: Color(0xFFFFCC00),
+                strokeWidth: 3.5,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// --- TU PÁGINA PRINCIPAL (LOGICA TOTALMENTE INTACTA) ---
 class PromedioPage extends StatefulWidget {
   const PromedioPage({super.key});
 
