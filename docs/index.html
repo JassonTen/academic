@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Academic App - Versión Oficial</title>
+    <style>
+        /* --- CONFIGURACIÓN DE COLORES Y BASE --- */
+        :root {
+            --bg-principal: #0b111e;
+            --bg-tarjeta: #162235;
+            --texto-claro: #f3f4f6;
+            --texto-mutado: #9ca3af;
+            --azul-acento: #3b82f6;
+            --azul-brillante: #60a5fa;
+            --oro-premium: #dfb76c;
+            --transicion: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-claro);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .hero-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1 1 500px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--azul-brillante) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            color: var(--texto-mutado);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        /* --- BOTÓN DE DESCARGA PREMIUM --- */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--azul-acento), #1d4ed8);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: var(--transicion);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, var(--azul-brillante), var(--azul-acento));
+        }
+
+        .btn-download .sub-text {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* --- DETALLES DE CARACTERÍSTICAS --- */
+        .features-list {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background-color: var(--bg-tarjeta);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            color: var(--oro-premium);
+            margin-bottom: 5px;
+        }
+
+        .feature-item p {
+            font-size: 0.88rem;
+            color: var(--texto-mutado);
+            margin-bottom: 0;
+        }
+
+        /* --- INTERFAZ DE SMARTPHONE VISUAL --- */
+        .phone-mockup {
+            flex: 1 1 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-border {
+            width: 280px;
+            height: 560px;
+            border: 10px solid #1e293b;
+            border-radius: 36px;
+            background-color: #020617;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .phone-notch {
+            width: 120px;
+            height: 20px;
+            background-color: #1e293b;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .phone-screen-content {
+            margin-top: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .app-icon-placeholder {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--azul-acento), var(--oro-premium));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .phone-ui-element {
+            width: 100%;
+            height: 40px;
+            background-color: var(--bg-tarjeta);
+            border-radius: 8px;
+            opacity: 0.6;
+        }
+
+        /* --- PIE DE PÁGINA --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--texto-mutado);
+            font-size: 0.85rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 60px;
+            }
+            .hero-text h1 { font-size: 2.3rem; }
+            .btn-download { width: 100%; justify-content: center; }
+            .phone-mockup { display: none; } /* Ocultar el celular en pantallas pequeñas para optimizar espacio */
+        }
+    </style>
+</head>
+<body>
+
+    <main class="hero-container">
+        
+        <section class="hero-text">
+            <h1>Academic App</h1>
+            <p>Gestiona tu rendimiento académico, controla tus asignaturas y optimiza tus tiempos de estudio desde una interfaz diseñada con precisión para estudiantes de ingeniería y tecnología.</p>
+            
+            <a href="https://github.com/JassonTen/academic/releases/latest/download/app-release.apk" class="btn-download">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <div>
+                    <span class="sub-text">Descargar archivo APK</span>
+                    Descargar para Android
+                </div>
+            </a>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>Rendimiento</h3>
+                    <p>Arquitectura ligera y optimizada para un consumo mínimo de batería.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Seguridad</h3>
+                    <p>Distribución directa y transparente firmada desde tu repositorio.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="phone-mockup">
+            <div class="phone-border">
+                <div class="phone-notch"></div>
+                <div class="phone-screen-content">
+                    <div class="app-icon-placeholder">A</div>
+                    <div style="font-weight: 700; font-size: 1.1rem; color: #fff;">Academic</div>
+                    <div style="font-size: 0.8rem; color: var(--texto-mutado);">v1.0.0 • Production Release</div>
+                    <div class="phone-ui-element" style="margin-top: 20px;"></div>
+                    <div class="phone-ui-element"></div>
+                    <div class="phone-ui-element" style="width: 70%;"></div>
+                </div>
+                <div class="phone-ui-element" style="height: 5px; width: 40%; margin: 0 auto; background-color: #334155;"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Academic App Ecosystem. Código abierto distribuido de forma independiente.</p>
+    </footer>
+
+</body>
+</html>
